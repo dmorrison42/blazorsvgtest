@@ -1,5 +1,38 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<div>
+    <div>
+        <input type="number" @bind="value" @bind:event="oninput"/> Native two way bind
+    </div>
+    <div>
+        <input type="number" @bind="value" @bind:event="oninput"/> Native two way bind (copy)
+    </div>
+    <div>
+        <input type="number" :event="oninput" value="@value"/> Native one way bind
+    </div>
+    <div>
+        <svg>
+            <foreignobject style="overflow:visible">
+                <input type="number"/> SVG No Bind
+            </foreignobject>
+        </svg>
+    </div>
+    <div>
+        <svg>
+            <foreignobject style="overflow:visible">
+                <input value="@value" type="number"/> SVG One way bind
+            </foreignobject>
+        </svg>
+    </div>
+    <div>
+        <svg>
+            <foreignobject style="overflow:visible">
+                <input @bind="value" @bind:event="oninput" type="number"/> SVG Two way bind
+            </foreignobject>
+        </svg>
+    </div>
+</div>
 
-Welcome to your new app.
+@code {
+    int value = 50;
+}
